@@ -1,0 +1,18 @@
+
+<script>
+    var aString = ' {"name" : "josh","age":23}';
+    var json1 = JSON.parse(aString);
+
+    document.write('hello my name is ' + json1.name + ' and I am ' + json1.age);
+
+
+    var Josh = new Object();
+    Josh.Hobby = "Piano";
+    Josh.CanCook = true;
+    Josh.LastName = "Sandoval";
+
+    let refrence = JSON.stringify(Josh);
+    document.write("<br><br>" + refrence);
+
+
+</script>
