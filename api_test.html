@@ -1,0 +1,43 @@
+<div>
+    Find Sunrise at latitude: <input style="width:100px" type="text" id="lat" /> and longitude: <input style="width:100px" type="text" id="lng" />
+    <input type="button" value="Go!" onclick="findLocation()"/>
+</div>
+
+<div id="results">Has not ran yet</div>
+
+<script>
+    let baseURL = "https://api.sunrise-sunset.org/json?lat="
+    let latitude = document.getElementById('lat');
+    let longitude = document.getElementById('lng');
+    let result = document.getElementById("results");
+    let aLocation;
+    
+    
+
+    function findLocation() {
+        if ((latitude.value != '' && longitude.value != '') && (!isNaN(latitude.value) && !isNaN(longitude.value))) {
+            let tempURL = baseURL + latitude.value + "&lng=" + longitude.value;
+            fetch(tempURL)
+                .then(response => response.json())
+                .then(data => {
+                    result.innerHTML = "Sunrise at: " + latitude.value + "and " + longitude.value + " is: " + data.results.sunrise;
+                    aLocation = data.results.sunrise;
+                }
+                );
+        }
+        else { alert("i pooted myself \\/*~*\\/") };
+    }
+
+    function findLocationMimic(lat,lon) {
+        let tempURL = baseURL + lat + "&lng=" + lon + "&formatted=0";
+        fetch(tempURL)
+            .then(response => response.json())
+            .then(data => {
+                result.innerHTML = "Sunrise at: " + lat + "and " + lon + " is: " + data.results.sunrise;
+                aLocation = data.results.sunrise;
+            }
+                );
+       
+    }
+
+</script>
